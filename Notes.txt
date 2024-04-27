@@ -1,0 +1,224 @@
+We have two phases:
+  1) Development phases
+      Where we make our project
+  2) Production phase
+      Where our project deployed and users use this project
+
+What is state?
+Stateful protocol
+    Stateful protocol requrie  server to to save the the status and sesion indormation.
+e.g FTP (File transfer protol)
+
+Stateless protocol
+    Stateless protocol does not require the server to  retain the server information.
+e.g HTTP
+When a client intract with our server it is called a single session.
+
+Express sessions
+    An attempt to make our sesion Stateful
+    When the users come to our website and start a session the express session store this sesion related info and make a use id and this session related information not stored in server as permanently it stored as temporarily
+    connect.sid -> connection session id
+
+Cookies
+  By default cookie have not expiry date
+
+Connect-flash
+    The flash is a special area of the session for storing messages. Messages are written to the flash and cleared after being dislayed for the user.
+
+Authentication and Authorization
+  Authentication
+    Authentication is the process of verifiying who someone is 
+    e.g- User sign/Login
+  Authorization
+    Authorization is the process of verifiying what specific applications, files data user can access to.
+
+Storing password
+    We never stored the password as it is. We store the password in hashed form.
+    hashing function: How it is stored.
+
+  Need to remember:
+    For every input, ther is a fixed output
+    They are oneway functions we cannot get input from output
+    For diffrent inputs there are a same length but diffrent output 
+    Small changes bring up the large changes in the output
+
+Password Slating:
+    Password salting is a technique to protect the passwords stored in the databases by adding a 32 more characters and hashing them.
+
+Passport
+    Passport is the liberary for Authentication
+    e.g, singin with google, signin with facebook, signin with linkedId etc.
+
+  -npm install passport
+    Def- passport is an express-compatible authentication middleware for nodejs
+
+  -npm install passport-local
+    Passport strategy for authenticating for username and password.
+
+  -npm passport-local-mongoose
+    passport-local-mongoose is a mongoose plugin that simplifies building with username and password login with Passport.
+
+user Model 
+  user: usename, email, password 
+
+Configuring strategy:
+    Passport.initialized()
+      A middleware that initiallize passport
+
+passport.session()
+  A web application needs the ability to identify users as they browse from page to page. The series of request and responses, each associated with the same user, is known as a session.
+
+  passport.use(new LocalStrategy("User.authentication()))
+
+Which hashing algorithm is impliment in passport?
+  Answer: pbkdf2 hashing algorithm
+
+SIGNUP USER 
+  get /signup    // Sign up form
+
+  post /signup   // Register new user
+
+LOGIN USER
+
+  get /login  // login form
+
+  post /login
+
+Connecting login route
+  How to check if the user is logedin
+  Method used
+  req.isAuthenticate()  // passport methed
+
+logout
+  req.logout() -> is a passport defined method that take parameter and redirect to the home page
+
+Add Styling
+
+
+        |> undefined (not logged in) -> Showing signup login
+req.user
+        |> if object (logged in) -> showing log out
+
+Auotmatic login after signup
+
+LOGIN AFTER SIGNUP
+
+Passport have a login method that Auotmatically establishes the a login session.
+We can invoke login to automatically login a user.
+
+Listing owner:
+
+Starting with Authorization:
+Hide Edit and Delete buttons for the other users that are not the owner of this listing
+  
+We must have knowledge of:
+  i) listing owner
+  ii) Who edit and Delete user
+    we will compare the listing owner id and currUser id, if id same then the edit and delete buttons will be showing
+
+(Module-51 lec-09 rehta hai)
+
+
+PHASE-3
+
+MVC: Model, View, Controler
+  Implement the design pattern for listings | We devide the code in different component
+  Implement the pattern for our reviews and Users
+
+--------
+router.route(path)
+Returns an instance of a single route which you can then use to handle HTTP verbs with optional middleware. Use router.route() to avoid duplicate route naming and thus typing errors.
+
+------
+
+IMAGE UPLOAD
+  Problems:
+  i) Form don't send files[images, photos] to backend.. Form only send raw data like links
+  ii) Mongodb saves only BSON[BSON have a limit of size]
+
+  Solution:
+  i)  To make form capable to taking files from frontent and store in backend
+  ii) For storing files we use third party service cloud servers [Companies store their files in Google cloud, AWS, Microdoft azure]. 
+  iii) And these cloud servers give us a link for mongodb
+
+Manipulating Form:
+  If we send file to any html form so, we change the encoding type of the form.
+  For encoding we use.
+  enctype = "multipart/form-data"
+
+Here we will use multer:
+  multer
+   Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files. It is written on top of busboy for maximum efficiency.
+
+Cloud setup:
+  Cloudanry and .env file 
+  We can't share these credendials on githubb
+.env
+  dotenv is the zero-depndenct module that loads environment variables from a .env file into process.env
+
+We have two phases:
+  1) Development phases
+      Where we make our project
+  2) Production phase
+      Where our project deployed and users use this project
+
+We use .env file only in Development phase. We cannot use deploy or .env file to github
+
+CLOUDINARY:
+  A liberary:
+  The Cloudinary Node SDK allows you to quickly and easily integrate your application with Cloudinary. Effortlessly optimize, transform, upload and manage your cloud's assets.
+
+Multer Storage Cloudinary
+  A multer storage engine for Cloudinary. Also consult the Cloudinary API.
+
+----------------------
+NOTE:
+  Force Installation: You can try forcing the installation by running npm install multer-storage-cloudinary --force. This will ignore any dependency conflicts and attempt to install the package anyway. However, be cautious as this might lead to potential issues if the dependencies are incompatible.
+
+-----------------------
+Steps for cloud:
+  i) Form (file)
+  ii) Backend (parse)
+  iii) Cloud (Store)
+  iv) URL/Link
+
+Save Link in Mongo (Modify image in Model Schema)
+
+Edit a listing with image
+  Image preview for edit page
+    let originalImageUrl = listing.image.url;
+    originalImageUrl = originalImageUrl.replace("/upload", "upload/h_300,w_250/e_blur:300");
+
+Getting starting with maps
+  mapbox.com
+  Mapbox GL JS is a client-side JavaScript library for building web maps and web applications with Mapbox's modern mapping technology. You can use Mapbox GL JS to display Mapbox maps in a web browser or client, add user interactivity, and customize the map experience in your application.
+
+Geocoding 
+Geocoding is the process of converting addresses (like a street address) into geographical addreesses (like latitude and longitude).
+
+Forward geocoding converts location text into geographic coordinates, turning 2 Lincoln Memorial Circle NW into -77.050,38.889.
+
+Reverse geocoding turns geographic coordinates into place names, turning -77.050, 38.889 into 2 Lincoln Memorial Circle NW. These location names can vary in specificity, from individual addresses to states and countries that contain the given coordinates.
+
+mapbox geocoding code from github
+  link-|
+  https://github.com/mapbox/mapbox-sdk-js
+
+First of all download this library:
+npm install @mapbox/mapbox-sdk --force
+
+--------------------
+Using GeoJSON
+GeoJSON is a format for storing geographic points and polygons. MongoDB has excellent support for geospatial queries on GeoJSON objects. Let's take a look at how you can use Mongoose to store and query GeoJSON objects
+
+Point Schema
+The most simple structure in GeoJSON is a point. Below is an example point representing the approximate location of San Francisco. Note that longitude comes first in a GeoJSON coordinate array, not latitude.
+-------
+Map Marker
+
+DEPLOYMENT:
+  i) Render (render.com)
+  ii) netlify
+  iii) cyclic etc
+
+Connect render with our github account
