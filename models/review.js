@@ -13,6 +13,6 @@ const reviewSchema = new Schema({
         ref: "User"
     }
 
-})
+}, {timestamps: true})
 
 module.exports = mongoose.model("Review", reviewSchema)

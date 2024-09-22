@@ -1,35 +1,43 @@
 <%- layout("/layouts/boilerplate")%>
+<style>
+@media(max-width: 768px){
+    .form-width {
+    width: 60%;
+    /* max-width: none; */
+    }
+}
+</style>
 
-    <div class="row mt-3">
-        <h2 class="col-6 offset-3">Signup on Wanderlusr</h2>
-        <div class="col-6 offset-3">
+    <div class="row mt-3 ms-6">
+        <h2 class="col-6 offset-3 sign show-t-f-size">Wellcome to the Wanderlust</h2>
+        <div class="col-6 offset-3 form-width">
             <form action="/signup" method="POST" class="needs-validation" novalidate>
                 <!-- Username field -->
-                <lable for="username" class="form-label">Username</lable>
+                <lable for="username" class="form-label label-size">Username</lable>
                 <input 
                 name="username" 
                 id="username"
                 type="text" 
-                class="form-control" 
+                class="form-control input-size"  
                 required>
                 <div class="valid-feedback">Looks good!</div>
                 <!-- Email field -->
-                <lable for="email" class="form-label">Email</lable>
+                <lable for="email" class="form-label label-size">Email</lable>
                 <input 
                 name="email" 
                 id="email"
                 type="email" 
-                class="form-control" 
+                class="form-control input-size" 
                 required>
                 <!-- Password field -->
-                <lable for="password" class="form-label">Password</lable>
+                <lable for="password" class="form-label label-size">Password</lable>
                 <input 
                 name="password" 
                 id="password"
                 type="password" 
-                class="form-control" 
+                class="form-control input-size" 
                 required>
-                <button class="btn btn-success mt-3">SignUp</button>
+                <button class="btn btn-success mt-3 btn-sm d-block d-sm-inline">sign up</button>
             </form>
             
             

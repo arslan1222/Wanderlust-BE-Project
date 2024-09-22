@@ -4,7 +4,7 @@ const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken});
 
 module.exports.index = async (req, res)=>{
-    const allListings = await Listing.find({});
+    const allListings = await Listing.find({}).sort({ createdAt: -1 });
     res.render("./listings/index.ejs", { allListings });
 }
 
@@ -26,7 +26,7 @@ module.exports.showListing = async (req, res)=>{
     })
     .populate("owner");
     if(!listing){
-        req.flash("success", "That listing is not existed")
+        req.flash("success", "That listing is not existed!");
         res.redirect("/listings")
     }
     // console.log(listing);
@@ -51,7 +51,7 @@ module.exports.createListing = async (req, res, next)=>{
     newListing.geometry = response.body.features[0].geometry;
     let savListing = await newListing.save();
     
-    req.flash("success", "New Listing Created");
+    req.flash("success", "New listing created!");
     res.redirect("/listings");
     }
 
@@ -60,7 +60,7 @@ module.exports.renderEditForm = async (req, res)=>{
     let { id } = req.params;
     const listing = await Listing.findById(id);
     if(!listing){
-        req.flash("error", "That listing is not existed");
+        req.flash("error", "That listing is not existed!");
         res.redirect("/listings");
     }
 
@@ -88,7 +88,7 @@ module.exports.updateListing = async(req, res)=>{
     await listing.save();
     }
 
-    req.flash("success", "Listing Updated");
+    req.flash("success", "Listing updated!");
     res.redirect(`/listings/${id}`);
 }
 

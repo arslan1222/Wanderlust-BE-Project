@@ -1,12 +1,11 @@
-body{
-
-  font-family: "Plus Jakarta Sans", sans-serif !important;
-  font-optical-sizing: auto !important;
-  font-weight: weight !important;
-  font-style: normal !important;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-optical-sizing: auto !important;
+    font-weight: weight !important;
+    font-style: normal !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 
 }
 
@@ -14,18 +13,168 @@ body{
     flex: 1;
 }
 
-.navbar {
-    height: 5rem;
-    background-color: white;
-}
+/* navbar */
 
 .fa-compass {
     color: #fe424d;
     font-size: 2rem;
 }
 
+.navbar {
+    height: 5rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 40px;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+
+.post-color {
+    color: #fe424d;
+    font-weight: 600;
+    padding-left: 7px !important;
+}
+
+/* .navbar-nav .nav-link {
+    margin-right: 20px;
+} */
+
+.sidebar-search {
+    margin-left: auto;
+}
+
+.search-btn {
+    color: #fff;
+    background-color: #fe424d;
+    padding: 0 1rem 0 1rem;
+    border-radius: 50px;
+}
+
+.search-btn:hover {
+    color: #fff;
+    background-color: #fe424d;
+}
+
+.search-btn i {
+    display: inline;
+    margin-right: 0.5rem;
+}
+
+.search-input {
+    border-radius: 30px;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    display: none;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.sidebar.show {
+    display: block;
+}
+
+.sidebar-toggler {
+    margin-bottom: 1rem;
+}
+
+.m-filter {
+    display: flex;
+}
+
+.btn-custom {
+    padding: 3px 6px;
+    font-size: 10px;
+}
+
+.search-bar,
+.search-btn {
+    padding: 5px 12px;
+    font-size: 14px;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .navbar {
+        padding-inline: 10px;
+    }
+
+    .navbar-collapse {
+        display: none !important;
+    }
+
+    .navbar-toggler {
+        display: block;
+        color: #fe424d;
+        border: none;
+    }
+
+    .post-color {
+        color: #fe424d;
+        font-weight: 700 !important;
+        padding-right: 7px;
+    }
+
+    .auth {
+        padding-left: 7px;
+    }
+
+    .sidebar {
+        display: block;
+        transform: translateX(-100%);
+        z-index: 10000;
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+
+    /* #filters {
+        display: none;
+        visibility: hidden;
+    } */
+
+    .filter p {
+        font-size: 6px;
+    }
+
+    .m-filter {
+        display: none;
+    }
+
+    .sidebar-search {
+        visibility: hidden;
+    }
+
+    .card-tile {
+        font-size: 14px;
+    }
+
+    .btn-custom {
+        padding: 2px 4px;
+        font-size: 8px;
+    }
+
+}
+
+
 .nav-link {
     color: #222222 !important;
+    font-weight: 500 !important;
 }
 
 /* Cards */
@@ -43,6 +192,7 @@ body{
     object-fit: cover !important;
     width: 100% !important;
 
+
 }
 
 .card-body {
@@ -50,7 +200,7 @@ body{
 }
 
 .card-text p {
-    font-weight: 400 !important;
+    font-weight: 600 !important;
 }
 
 .listing-link {
@@ -58,7 +208,6 @@ body{
 }
 
 /* Card effects */
-
 .card-img-overlay {
     opacity: 0;
 }
@@ -69,21 +218,18 @@ body{
 }
 
 /* new page */
-
 .add-btn {
     background-color: #fe424d !important;
     border: none !important;
 }
 
 /* Edit page */
-
 .edit-btn {
     background-color: #fe424d !important;
     border: none !important;
 }
 
 /* Show page */
-
 .show-card {
     padding-inline: 0;
 }
@@ -92,43 +238,33 @@ body{
     height: 30vh !important;
 }
 
+.mt {
+    margin-top: -40px !important;
+}
+
 .btns {
     display: flex;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.userName {
+    font-size: 14px;
+}
 
 /*  Footer */
 
 .f-info {
     text-align: center;
-    height: 8rem;
     display: flex;
+    height: 8rem;
     background-color: #ebebeb;
     flex-wrap: wrap;
     justify-content: center;
     align-items: space-evenly;
 }
 
-.f-info-links, .f-info-socials, .f-info-brand {
+.f-info-links,
+.f-info-socials,
+.f-info-brand {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -138,7 +274,7 @@ body{
 .f-info-socials i {
     margin-right: 1rem;
     font-size: 1.2rem;
-} 
+}
 
 .f-info-links a {
     text-decoration: none;
@@ -149,10 +285,101 @@ body{
     text-decoration: underline;
 }
 
+.sign {
+    font-size: 16px;
+}
+
+.show-s-f-size {
+    font-size: 10px;
+    display: -webkit-box;
+    /* For WebKit browsers */
+    display: box;
+    /* Non-prefixed version for other browsers */
+    -webkit-box-orient: vertical;
+    /* For WebKit browsers */
+    box-orient: vertical;
+    /* Non-prefixed version for other browsers */
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    /* For WebKit browsers */
+    line-clamp: 3;
+    /* Non-prefixed version (not widely supported) */
+    max-height: calc(3 * 8px * 1.2);
+    /* Adjust for line height */
+}
+
+/* Form input */
+
+
+@media(max-width: 768px) {
+
+    .input-size {
+        width: 100%;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .label-size {
+        font-size: 14px;
+    }
+
+    .show-f-size {
+        font-size: 14px;
+    }
+
+    .show-t-f-size {
+        font-size: 18px;
+    }
+
+    .show-a-f-size {
+        font-size: 10px;
+        display: -webkit-box;
+        display: box;
+        -webkit-box-orient: vertical;
+        box-orient: vertical;
+        overflow: hidden;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        max-height: calc(3 * 8px * 1.2);
+    }
+
+    .show-s-f-size {
+        font-size: 8px;
+        display: -webkit-box;
+        display: box;
+        -webkit-box-orient: vertical;
+        box-orient: vertical;
+        overflow: hidden;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        max-height: calc(3 * 8px * 1.2);
+    }
+
+    .show-image {
+        width: 125% !important;
+    }
+
+    .mt {
+        margin-top: -40px !important;
+    }
+
+    .show-stars {
+        font-size: 14px;
+        width: 20px;
+        height: 20px;
+    }
+
+    #map {
+        height: 150px !important;
+        width: 35vh !important;
+    }
+
+
+}
+
 
 /* Map */
-
-#map { 
+#map {
     height: 300px;
     width: 80vh;
 }

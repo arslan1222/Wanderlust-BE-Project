@@ -50,11 +50,9 @@ router
     .route("/:id/edit")
     .get(
       isLoggedIn,
-      isOwner,
       wrapAsync(listingConroller.renderEditForm))
     .get(
       isLoggedIn,
-      isOwner,
       wrapAsync(listingConroller.editRoute))
     
 
@@ -65,13 +63,11 @@ router.route("/:id")
     wrapAsync(listingConroller.showListing))
     .put(
       isLoggedIn,
-      isOwner,
       upload.single("listing[image]"),
       wrapAsync(listingConroller.updateListing),
       validateListing)
     .delete( 
       isLoggedIn,
-      isOwner,
       wrapAsync(listingConroller.destroyLising));
 
 

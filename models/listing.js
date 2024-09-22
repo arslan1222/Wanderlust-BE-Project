@@ -37,7 +37,7 @@ const listingSchema = new Schema({
         }
     }
     
-});
+},{timestamps: true});
 
 // Mongoose middleware
 listingSchema.post("findOneAndDelete", async(listing)=>{

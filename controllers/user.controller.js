@@ -19,7 +19,7 @@ module.exports.signup = async (req, res)=>{
         if(error){
             return next();
         }
-        req.flash("success", "Wellcome to Wanderlust");
+        req.flash("success", "Wellcome to the Wanderlust!");
     res.redirect("/listings");
     })
     } catch(error){
@@ -46,7 +46,7 @@ module.exports.logout = (req, res, next)=>{
         if(error){
             return next();
         }
-        req.flash("success", "You are loggedout!");
+        req.flash("success", "You are logged out!");
         res.redirect("/listings")
     })
 }
